@@ -3,15 +3,10 @@
 class Application
 {
 public:
-	Application();
 
-	void Run();
+    Application();
+    virtual ~Application() = default;
 
-private:
-	bool m_Runninge;
-
-	void ProcessInput();
-	void Update();
-	void Render();
-
+    virtual void OnUpdate();
+    virtual void OnRender();
 };

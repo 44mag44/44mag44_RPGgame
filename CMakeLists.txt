@@ -33,6 +33,11 @@ add_executable(
 
 	Engine/Core/World/World.hpp
 	Engine/Core/World/World.cpp
+
+	Engine/Core/Events/Event.hpp
+
+	Engine/Core/Renderer/Renderer.hpp
+	Engine/Core/Renderer/Renderer.cpp
 )
 
 

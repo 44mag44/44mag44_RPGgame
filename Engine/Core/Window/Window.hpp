@@ -4,17 +4,14 @@ class Window
 {
 public:
 
-	Window();
+    Window();
 
-	bool Create();
-	
-	void Update();
-	void Close();
+    void Update();
 
-	bool IsOpen() const;
+    bool IsOpen() const;
+
+    void Close();
 
 private:
-
-	bool m_isOpen;
+    bool m_IsOpen;
 };
-

@@ -4,8 +4,9 @@
 
 #include <iostream>
 
-Engine::Engine()
+Engine::Engine(Application& application)
 	:
+	m_Application(application),
 	m_Running(true)
 {
 
@@ -16,18 +17,25 @@ Engine::Engine()
 
 void Engine::Run()
 {
-	m_Window.Create();
-
 	while (m_Running && m_Window.IsOpen())
 	{
 		Time::Update();
-	
-		ProcessInput();
-		Update();
-		Render();
-	}
 
-	m_Window.Close();
+		m_Window.Update();
+
+		ProcessInput();
+
+		m_World.Update();
+
+		m_Application.OnUpdate();
+
+		m_Renderer.BeginFrame();
+
+		m_Application.OnRender();
+
+		m_Renderer.EndFrame();
+		
+	}
 }
 
 
@@ -35,18 +43,4 @@ void Engine::Run()
 void Engine::ProcessInput()
 {
 	std::cout << "Processing Engine input..." << std::endl;
-}
-
-
-
-void Engine::Update()
-{
-	m_World.Update();
-}
-
-
-
-void Engine::Render()
-{
-	std::cout << "Rendering Engine..." << std::endl;
 }

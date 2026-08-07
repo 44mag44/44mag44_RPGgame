@@ -2,19 +2,9 @@
 
 
 Window::Window()
-	: m_isOpen(false)
+	: m_IsOpen(true)
 {
-
 }
-
-
-
-bool Window::Create()
-{
-	m_isOpen = true;
-	return m_isOpen;
-}
-
 
 void Window::Update()
 {
@@ -22,13 +12,15 @@ void Window::Update()
 }
 
 
-void Window::Close()
-{
-	m_isOpen = false;
-}
-
 
 bool Window::IsOpen() const
 {
-	return m_isOpen;
+	return m_IsOpen;
+}
+
+
+
+void Window::Close()
+{
+	m_IsOpen = false;
 }
