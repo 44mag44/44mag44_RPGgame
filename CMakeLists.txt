@@ -37,7 +37,9 @@ add_executable(
 	Engine/Core/Events/Event.hpp
 
 	Engine/Core/Renderer/Renderer.hpp
-	Engine/Core/Renderer/Renderer.cpp
+
+	Engine/Core/Renderer/NullRenderer.cpp
+	Engine/Core/Renderer/NullRenderer.hpp
 )
 
 
