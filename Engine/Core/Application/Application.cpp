@@ -4,7 +4,7 @@
 
 Application::Application()
 {
-	
+	// Constructor implementation (if needed)	
 }
 
 // function to update the game state

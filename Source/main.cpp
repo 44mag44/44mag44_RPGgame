@@ -1,7 +1,7 @@
 #include "Core/Application/Application.hpp"
 #include "Core/Engine/Engine.hpp"
 #include "Core/Renderer/NullRenderer.hpp"
-
+	
 #include <memory>
 #include <utility>
 

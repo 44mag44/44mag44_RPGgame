@@ -2,11 +2,6 @@
 
 #include <iostream>
 
-World::World()
-{
-
-}
-
 void World::Update()
 {
 	// Update the world state here

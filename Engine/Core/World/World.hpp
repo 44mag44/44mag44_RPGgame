@@ -3,7 +3,7 @@
 class World
 {
 public:
-	World();
+	//World();
 	
 	void Update();
 };

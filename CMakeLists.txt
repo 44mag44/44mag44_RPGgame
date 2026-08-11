@@ -34,7 +34,12 @@ add_executable(
 	Engine/Core/World/World.hpp
 	Engine/Core/World/World.cpp
 
-	Engine/Core/Events/Event.hpp
+	Engine/Core/Event/Event.hpp
+	Engine/Core/Event/WindowCloseEvent.hpp
+	Engine/Core/Event/KeyEvent.hpp
+	Engine/Core/Event/KeyPressedEvent.hpp
+	Engine/Core/Event/KeyReleasedEvent.hpp
+	Engine/Core/Event/EventDispatcher.hpp
 
 	Engine/Core/Renderer/Renderer.hpp
 
