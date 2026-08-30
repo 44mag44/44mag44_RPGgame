@@ -1,23 +1,31 @@
 #pragma once
 
-
 #include "Core/Event/Event.hpp"
 
-class KeyEvent : public Event
+class KeyPressedEvent : public Event
 {
 public:
-	explicit KeyEvent(int Key)
-		:
-		m_Key(Key)
-	{
-	}
+    explicit KeyPressedEvent(int keyCode)
+        :
+        m_KeyCode(keyCode)
+    {
+    }
 
+    static EventType GetStaticType()
+    {
+        return EventType::KeyPressed;
+    }
 
-	int GetKey() const
-	{
-		return m_Key;
-	}
+    EventType GetType() const override
+    {
+        return GetStaticType();
+    }
 
-protected:
-	int m_Key;
+    int GetKeyCode() const
+    {
+        return m_KeyCode;
+    }
+
+private:
+    int m_KeyCode;
 };

@@ -20,6 +20,8 @@ public:
     bool IsOpen() const;
 
     void SetEventCallback(EventCallback callback);
+    
+    void DispatchEvent(Event& event);
 
 
 private:

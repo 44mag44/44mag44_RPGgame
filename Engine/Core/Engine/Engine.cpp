@@ -2,6 +2,7 @@
 #include "Core/Time/Time.hpp"
 #include "Core/Event/EventDispatcher.hpp"
 #include "Core/Event/WindowCloseEvent.hpp"
+#include "Core/Event/KeyEvent.hpp"
 
 
 #include <iostream>
@@ -58,14 +59,25 @@ void Engine::ProcessInput()
 
 void Engine::OnEvent(Event& event)
 {
-	EventDispatcher dispatcher(event);
+    EventDispatcher dispatcher(event);
 
-	dispatcher.Dispatch<WindowCloseEvent>(
-		[this](WindowCloseEvent& event)
-		{
-			return OnWindowClose(event);
-		}
-	);
+    dispatcher.Dispatch<KeyPressedEvent>(
+        [](KeyPressedEvent& event)
+        {
+            std::cout << "Key pressed: "
+                      << event.GetKeyCode()
+                      << std::endl;
+
+            return false;
+        }
+    );
+
+    dispatcher.Dispatch<WindowCloseEvent>(
+        [this](WindowCloseEvent& event)
+        {
+            return OnWindowClose(event);
+        }
+    );
 }
 
 
