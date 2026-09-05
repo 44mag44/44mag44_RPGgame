@@ -1,6 +1,7 @@
 #include "Core/Window/Window.hpp"
 #include "Core/Event/WindowCloseEvent.hpp"
 #include "Core/Event/KeyEvent.hpp"
+#include "Core/Event/KeyPressedEvent.hpp"
 
 #include <utility>
 

@@ -2,8 +2,6 @@
 
 #include "Core/Event/Event.hpp"
 
-#include <functional>
-
 class EventDispatcher
 {
 public:

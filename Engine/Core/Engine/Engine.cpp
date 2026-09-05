@@ -1,8 +1,13 @@
 #include "Core/Engine/Engine.hpp"
+
 #include "Core/Time/Time.hpp"
+
 #include "Core/Event/EventDispatcher.hpp"
 #include "Core/Event/WindowCloseEvent.hpp"
 #include "Core/Event/KeyEvent.hpp"
+#include "Core/Event/KeyPressedEvent.hpp"
+
+#include "Core/Input/Input.hpp"
 
 
 #include <iostream>
@@ -52,13 +57,19 @@ void Engine::Run()
 
 void Engine::ProcessInput()
 {
-	std::cout << "Processing Engine input..." << std::endl;
+	//std::cout << "Processing Engine input..." << std::endl;
+	if (Input::IsKeyDown(65))
+    {
+        std::cout << "A is down" << std::endl;
+    }
 }
 
 
 
 void Engine::OnEvent(Event& event)
 {
+	Input::OnEvent(event);
+
     EventDispatcher dispatcher(event);
 
     dispatcher.Dispatch<KeyPressedEvent>(

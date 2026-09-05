@@ -43,8 +43,11 @@ add_executable(
 
 	Engine/Core/Renderer/Renderer.hpp
 
-	Engine/Core/Renderer/NullRenderer.cpp
 	Engine/Core/Renderer/NullRenderer.hpp
+	Engine/Core/Renderer/NullRenderer.cpp
+
+	Engine/Core/Input/Input.hpp
+	Engine/Core/Input/Input.cpp
 )
 
 
