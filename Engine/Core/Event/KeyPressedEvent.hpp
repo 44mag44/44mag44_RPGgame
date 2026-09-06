@@ -6,9 +6,9 @@
 class KeyPressedEvent : public KeyEvent
 {
 public:
-	explicit KeyPressedEvent(int Key)
+	explicit KeyPressedEvent(Key key)
 		:
-		KeyEvent(Key)
+		KeyEvent(key)
 	{
 	}
 

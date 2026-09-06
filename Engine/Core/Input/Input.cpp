@@ -4,9 +4,7 @@
 #include "Core/Event/KeyPressedEvent.hpp"
 #include "Core/Event/KeyReleasedEvent.hpp"
 
-#include <iostream>
-
-bool Input::m_Keys[256] = {};
+std::array<bool, Input::KeyCount> Input::m_Keys = {};
 
 void Input::OnEvent(Event& event)
 {
@@ -15,11 +13,13 @@ void Input::OnEvent(Event& event)
     dispatcher.Dispatch<KeyPressedEvent>(
         [](KeyPressedEvent& event)
         {
-            int keyCode = event.GetKeyCode();
+            Key key = event.GetKey();
 
-            if (keyCode >= 0 && keyCode < 256)
+            auto index = static_cast<std::size_t>(key);
+
+            if (index < Input::KeyCount)
             {
-                m_Keys[keyCode] = true;
+                Input::m_Keys[index] = true;
             }
 
             return false;
@@ -29,11 +29,13 @@ void Input::OnEvent(Event& event)
     dispatcher.Dispatch<KeyReleasedEvent>(
         [](KeyReleasedEvent& event)
         {
-            int keyCode = event.GetKeyCode();
+            Key key = event.GetKey();
 
-            if (keyCode >= 0 && keyCode < 256)
+            auto index = static_cast<std::size_t>(key);
+
+            if (index < Input::KeyCount)
             {
-                m_Keys[keyCode] = false;
+                Input::m_Keys[index] = false;
             }
 
             return false;
@@ -41,17 +43,19 @@ void Input::OnEvent(Event& event)
     );
 }
 
-bool Input::IsKeyDown(int keyCode)
+bool Input::IsKeyDown(Key key)
 {
-    if (keyCode < 0 || keyCode >= 256)
+    auto index = static_cast<std::size_t>(key);
+
+    if (index >= KeyCount)
     {
         return false;
     }
 
-    return m_Keys[keyCode];
+    return m_Keys[index];
 }
 
-bool Input::IsKeyUp(int keyCode)
+bool Input::IsKeyUp(Key key)
 {
-    return !IsKeyDown(keyCode);
+    return !IsKeyDown(key);
 }

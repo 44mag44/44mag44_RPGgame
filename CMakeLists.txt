@@ -48,6 +48,8 @@ add_executable(
 
 	Engine/Core/Input/Input.hpp
 	Engine/Core/Input/Input.cpp
+	Engine/Core/Input/Key.hpp
+	Engine/Core/Input/InputBackend.hpp
 )
 
 

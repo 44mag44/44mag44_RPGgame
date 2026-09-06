@@ -1,21 +1,22 @@
 #pragma once
 
 #include "Core/Event/Event.hpp"
+#include "Core/Input/Key.hpp"
 
 class KeyEvent : public Event
 {
 public:
-    explicit KeyEvent(int keyCode)
+    Key GetKey() const
+    {
+        return m_Key;
+    }
+
+protected:
+    explicit KeyEvent(Key key)
         :
-        m_KeyCode(keyCode)
-    {
-    }
-
-    int GetKeyCode() const
-    {
-        return m_KeyCode;
-    }
-
-private:
-    int m_KeyCode;
+        m_Key(key)
+        {
+        }
+        
+    Key m_Key;
 };

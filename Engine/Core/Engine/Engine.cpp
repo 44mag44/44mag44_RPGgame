@@ -58,7 +58,7 @@ void Engine::Run()
 void Engine::ProcessInput()
 {
 	//std::cout << "Processing Engine input..." << std::endl;
-	if (Input::IsKeyDown(65))
+	if (Input::IsKeyDown(Key::A))
     {
         std::cout << "A is down" << std::endl;
     }
@@ -76,7 +76,7 @@ void Engine::OnEvent(Event& event)
         [](KeyPressedEvent& event)
         {
             std::cout << "Key pressed: "
-                      << event.GetKeyCode()
+                      << static_cast<int>(event.GetKey())
                       << std::endl;
 
             return false;

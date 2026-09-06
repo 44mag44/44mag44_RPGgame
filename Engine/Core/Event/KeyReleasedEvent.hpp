@@ -6,9 +6,9 @@
 class KeyReleasedEvent : public KeyEvent
 {
 public:
-	explicit KeyReleasedEvent(int Key)
+	explicit KeyReleasedEvent(Key key)
 		:
-		KeyEvent(Key)
+		KeyEvent(key)
 	{
 	}
 

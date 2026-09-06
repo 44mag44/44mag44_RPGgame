@@ -1,7 +1,10 @@
 #include "Core/Window/Window.hpp"
+
 #include "Core/Event/WindowCloseEvent.hpp"
 #include "Core/Event/KeyEvent.hpp"
 #include "Core/Event/KeyPressedEvent.hpp"
+
+#include "Core/Input/Key.hpp"
 
 #include <utility>
 
@@ -17,7 +20,7 @@ void Window::Update()
 
 	if (!eventSent)
 	{
-		KeyPressedEvent event(65);
+		KeyPressedEvent event(Key::A);
 
 		DispatchEvent(event);
 
