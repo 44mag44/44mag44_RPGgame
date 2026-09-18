@@ -50,6 +50,10 @@ add_executable(
 	Engine/Core/Input/Input.cpp
 	Engine/Core/Input/Key.hpp
 	Engine/Core/Input/InputBackend.hpp
+
+	Engine/Core/Input/Backend/NullInputBackend.hpp
+	Engine/Core/Input/Backend/NullInputBackend.cpp
+
 )
 
 

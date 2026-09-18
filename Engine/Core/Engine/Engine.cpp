@@ -15,14 +15,23 @@
 
 Engine::Engine(
 	Application& application,
-	std::unique_ptr<Renderer> renderer
+	std::unique_ptr<Renderer> renderer,
+	std::unique_ptr<InputBackend> inputBackend
 )
 	:
 	m_Application(application),
 	m_Renderer(std::move(renderer)),
+	m_InputBackend(std::move(inputBackend)),
 	m_Running(true)
 {
 	m_Window.SetEventCallback(
+		[this](Event& event)
+		{
+			OnEvent(event);
+		}
+	);
+
+	m_InputBackend->SetEventCallback(
 		[this](Event& event)
 		{
 			OnEvent(event);
@@ -41,15 +50,20 @@ void Engine::Run()
 
 		m_Window.Update();
 
+		m_InputBackend->ProcessEvents();
+
 		ProcessInput();
 
 		m_World.Update();
+
 		m_Application.OnUpdate();
+
 		m_Renderer->BeginFrame();
 		m_Application.OnRender();
 		m_Renderer->Draw();
 		m_Renderer->EndFrame();
 	}
+
 	m_Window.Close();
 }
 
