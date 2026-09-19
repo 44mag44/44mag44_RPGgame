@@ -8,6 +8,7 @@ void NullInputBackend::ProcessEvents()
     if (m_EventCallback)
     {
         KeyPressedEvent event(Key::A);
+        
         m_EventCallback(event);
     }
 }

@@ -3,7 +3,7 @@
 #include "Core/Event/Event.hpp"
 
 #include <functional>
-
+#include <utility>
 
 
 class InputBackend
@@ -20,6 +20,6 @@ public:
         m_EventCallback = std::move(callback);
     }
     
-    protected:
-        EventCallback m_EventCallback;
+protected:
+    EventCallback m_EventCallback;
 };

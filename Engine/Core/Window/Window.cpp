@@ -1,41 +1,41 @@
 #include "Core/Window/Window.hpp"
 
-#include "Core/Event/WindowCloseEvent.hpp"
-
 #include <utility>
 
+
 Window::Window()
-	:
-	m_IsOpen(true)
+	:  m_IsOpen(true)
 {
 }
 
+Window::Window(std::unique_ptr<WindowsBackend> backend)
+	: m_Backend(std::move(backend))
+	{
+
+	}
+
+
+
 void Window::Update()
 {
-	// Update window logic here
+	m_Backend->ProcessEvents();
 }
 
 
 
 void Window::Close()
 {
-	m_IsOpen = false;
+	m_Backend->Close();
 }
 
 
 
 bool Window::IsOpen() const
 {
-	return m_IsOpen;
+	return m_Backend->IsOpen();
 }
 
-void Window::DispatchEvent(Event &event)
-{
-	if(m_EventCallback)
-	{
-		m_EventCallback(event);
-	}
-}
+
 
 void Window::SetEventCallback(EventCallback callback)
 {

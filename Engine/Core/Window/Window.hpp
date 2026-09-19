@@ -2,17 +2,19 @@
 
 
 #include "Core/Event/Event.hpp"
+#include "Core/Window/Backend/WindowsBackend.hpp"
 
 #include <functional>
-
+#include <memory>
 
 class Window
 {
 public:
+    Window();  
+
 	using EventCallback = std::function<void(Event&)>;
 
-public:
-    Window();
+    explicit Window(std::unique_ptr<WindowsBackend> backend);
 
     void Update();
     void Close();
@@ -21,10 +23,10 @@ public:
 
     void SetEventCallback(EventCallback callback);
     
-    void DispatchEvent(Event& event);
-
-
 private:
-    bool m_IsOpen;
+    std::unique_ptr<WindowsBackend> m_Backend;
+    bool m_IsOpen = true;
+    
+
 	EventCallback m_EventCallback;
 };

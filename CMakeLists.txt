@@ -54,6 +54,8 @@ add_executable(
 	Engine/Core/Input/Backend/NullInputBackend.hpp
 	Engine/Core/Input/Backend/NullInputBackend.cpp
 
+	Engine/Core/Window/Backend/WindowsBackend.hpp
+
 )
 
 
